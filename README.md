@@ -45,10 +45,4 @@ src/test/java/com/surajswamy/api/
 `-- tests/    # Shared request setup and TestNG tests
 ```
 
-## Current limitations
 
-- The project uses a public fake API, so write operations are not persisted.
-- Authentication and JSON schema validation are not covered yet.
-- The suite runs locally through Maven; CI execution can be added later.
-
-These are possible next steps rather than features already implemented.
