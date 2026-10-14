@@ -5,9 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.blankOrNullString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.not;
 
 public class PostsApiTest extends BaseApiTest {
 
@@ -23,6 +25,18 @@ public class PostsApiTest extends BaseApiTest {
                 .body("id", equalTo(1))
                 .body("userId", equalTo(1))
                 .body("title", not(blankOrNullString()));
+    }
+    @Test
+    public void shouldReturnPostsForUser() {
+        given()
+                .spec(requestSpec)
+                .queryParam("userId", 1)
+        .when()
+                .get("/posts")
+        .then()
+                .statusCode(200)
+                .body("size()", greaterThan(0))
+                .body("userId", everyItem(equalTo(1)));
     }
 
     @Test

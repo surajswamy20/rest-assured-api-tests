@@ -7,6 +7,7 @@ The tests use [JSONPlaceholder](https://jsonplaceholder.typicode.com/), a public
 ## Scenarios covered
 
 - Get an existing post and validate important response fields
+- Filter posts by user and validate every returned item
 - Verify the response for a post that does not exist
 - Create a post using a Java object as the request body
 - Update a post and validate the deserialized response
